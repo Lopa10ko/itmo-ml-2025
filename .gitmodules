@@ -1,0 +1,3 @@
+[submodule "lab-8/EuroSAT"]
+	path = lab-8/EuroSAT
+	url = https://github.com/phelber/EuroSAT.git
