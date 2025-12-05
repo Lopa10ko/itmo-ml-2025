@@ -1,0 +1,129 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 800px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#6baed6", "font": {"size": 36}, "id": "specialty_enf", "label": "specialty_enf", "level": 0, "shape": "dot", "size": 45, "title": "specialty_enf (Logit (LogisticRegression))"}, {"color": "#e6550d", "font": {"size": 36}, "id": "appointment_month_aug", "label": "appointment_month_aug", "level": 0, "shape": "dot", "size": 45, "title": "appointment_month_aug (Discrete)"}, {"color": "#e6550d", "font": {"size": 36}, "id": "no_show", "label": "no_show", "level": 1, "shape": "dot", "size": 45, "title": "no_show (Discrete)"}, {"color": "#bdbdbd", "font": {"size": 36}, "id": "patient_needs_companion", "label": "patient_needs_companion", "level": 2, "shape": "dot", "size": 45, "title": "patient_needs_companion (ConditionalLogit (LogisticRegression))"}, {"color": "#bdbdbd", "font": {"size": 36}, "id": "appointment_date", "label": "appointment_date", "level": 3, "shape": "dot", "size": 45, "title": "appointment_date (ConditionalLogit (LogisticRegression))"}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "specialty_enf", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_enf", "to": "patient_needs_companion"}, {"arrows": "to", "from": "specialty_enf", "to": "no_show"}, {"arrows": "to", "from": "patient_needs_companion", "to": "appointment_date"}, {"arrows": "to", "from": "no_show", "to": "appointment_date"}, {"arrows": "to", "from": "no_show", "to": "patient_needs_companion"}, {"arrows": "to", "from": "appointment_month_aug", "to": "appointment_date"}, {"arrows": "to", "from": "appointment_month_aug", "to": "no_show"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "layout": {
+        "hierarchical": {
+            "blockShifting": true,
+            "edgeMinimization": true,
+            "enabled": true,
+            "levelSeparation": 150,
+            "parentCentralization": true,
+            "sortMethod": "hubsize",
+            "treeSpacing": 200
+        },
+        "improvedLayout": true,
+        "randomSeed": 0
+    },
+    "physics": {
+        "enabled": true,
+        "hierarchicalRepulsion": {
+            "centralGravity": 0.5,
+            "damping": 0.09,
+            "nodeDistance": 300,
+            "springConstant": 0.01,
+            "springLength": 100
+        },
+        "solver": "hierarchicalRepulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

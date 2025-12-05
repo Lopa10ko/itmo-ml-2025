@@ -1,0 +1,129 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 800px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_enf", "label": "specialty_enf", "level": 0, "shape": "dot", "size": 45, "title": "specialty_enf (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_sem especialidade", "label": "specialty_sem especialidade", "level": 0, "shape": "dot", "size": 45, "title": "specialty_sem especialidade (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "appointment_month_april", "label": "appointment_month_april", "level": 0, "shape": "dot", "size": 45, "title": "appointment_month_april (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "appointment_month_aug", "label": "appointment_month_aug", "level": 1, "shape": "dot", "size": 45, "title": "appointment_month_aug (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_assist", "label": "specialty_assist", "level": 2, "shape": "dot", "size": 45, "title": "specialty_assist (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_pedagogo", "label": "specialty_pedagogo", "level": 3, "shape": "dot", "size": 45, "title": "specialty_pedagogo (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_occupational therapy", "label": "specialty_occupational therapy", "level": 4, "shape": "dot", "size": 45, "title": "specialty_occupational therapy (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "rain_intensity_heavy", "label": "rain_intensity_heavy", "level": 4, "shape": "dot", "size": 45, "title": "rain_intensity_heavy (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_physiotherapy", "label": "specialty_physiotherapy", "level": 5, "shape": "dot", "size": 45, "title": "specialty_physiotherapy (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "rain_intensity_moderate", "label": "rain_intensity_moderate", "level": 5, "shape": "dot", "size": 45, "title": "rain_intensity_moderate (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_speech therapy", "label": "specialty_speech therapy", "level": 6, "shape": "dot", "size": 45, "title": "specialty_speech therapy (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "rain_intensity_no_rain", "label": "rain_intensity_no_rain", "level": 6, "shape": "dot", "size": 45, "title": "rain_intensity_no_rain (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "specialty_psychotherapy", "label": "specialty_psychotherapy", "level": 7, "shape": "dot", "size": 45, "title": "specialty_psychotherapy (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "disability_motor", "label": "disability_motor", "level": 8, "shape": "dot", "size": 45, "title": "disability_motor (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "disability_intellectual", "label": "disability_intellectual", "level": 9, "shape": "dot", "size": 45, "title": "disability_intellectual (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "rainy_day_before", "label": "rainy_day_before", "level": 10, "shape": "dot", "size": 45, "title": "rainy_day_before (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "storm_day_before", "label": "storm_day_before", "level": 11, "shape": "dot", "size": 45, "title": "storm_day_before (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "under_12_years_old", "label": "under_12_years_old", "level": 11, "shape": "dot", "size": 45, "title": "under_12_years_old (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "no_show", "label": "no_show", "level": 11, "shape": "dot", "size": 45, "title": "no_show (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "patient_needs_companion", "label": "patient_needs_companion", "level": 12, "shape": "dot", "size": 45, "title": "patient_needs_companion (Discrete)"}, {"color": "#e78ac3", "font": {"size": 36}, "id": "appointment_date", "label": "appointment_date", "level": 13, "shape": "dot", "size": 45, "title": "appointment_date (Discrete)"}, {"color": "#e6550d", "font": {"size": 36}, "id": "age", "label": "age", "level": 14, "shape": "dot", "size": 45, "title": "age (ConditionalGaussian (LinearRegression))"}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "specialty_enf", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_enf", "to": "specialty_psychotherapy"}, {"arrows": "to", "from": "specialty_enf", "to": "disability_motor"}, {"arrows": "to", "from": "specialty_enf", "to": "specialty_speech therapy"}, {"arrows": "to", "from": "specialty_enf", "to": "age"}, {"arrows": "to", "from": "specialty_enf", "to": "specialty_physiotherapy"}, {"arrows": "to", "from": "specialty_enf", "to": "under_12_years_old"}, {"arrows": "to", "from": "specialty_enf", "to": "specialty_occupational therapy"}, {"arrows": "to", "from": "specialty_enf", "to": "patient_needs_companion"}, {"arrows": "to", "from": "specialty_enf", "to": "specialty_pedagogo"}, {"arrows": "to", "from": "specialty_enf", "to": "rain_intensity_no_rain"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "age"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "specialty_psychotherapy"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "specialty_speech therapy"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "specialty_physiotherapy"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "disability_motor"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "specialty_occupational therapy"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "rain_intensity_moderate"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "appointment_month_aug"}, {"arrows": "to", "from": "specialty_sem especialidade", "to": "no_show"}, {"arrows": "to", "from": "appointment_month_april", "to": "appointment_date"}, {"arrows": "to", "from": "appointment_month_april", "to": "appointment_month_aug"}, {"arrows": "to", "from": "appointment_month_april", "to": "age"}, {"arrows": "to", "from": "appointment_month_april", "to": "rain_intensity_no_rain"}, {"arrows": "to", "from": "appointment_month_april", "to": "rainy_day_before"}, {"arrows": "to", "from": "appointment_month_aug", "to": "appointment_date"}, {"arrows": "to", "from": "appointment_month_aug", "to": "age"}, {"arrows": "to", "from": "appointment_month_aug", "to": "rain_intensity_heavy"}, {"arrows": "to", "from": "appointment_month_aug", "to": "rain_intensity_moderate"}, {"arrows": "to", "from": "appointment_month_aug", "to": "rainy_day_before"}, {"arrows": "to", "from": "appointment_month_aug", "to": "no_show"}, {"arrows": "to", "from": "appointment_month_aug", "to": "specialty_assist"}, {"arrows": "to", "from": "specialty_assist", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_assist", "to": "specialty_psychotherapy"}, {"arrows": "to", "from": "specialty_assist", "to": "age"}, {"arrows": "to", "from": "specialty_assist", "to": "specialty_speech therapy"}, {"arrows": "to", "from": "specialty_assist", "to": "disability_motor"}, {"arrows": "to", "from": "specialty_assist", "to": "specialty_physiotherapy"}, {"arrows": "to", "from": "specialty_assist", "to": "under_12_years_old"}, {"arrows": "to", "from": "specialty_assist", "to": "specialty_occupational therapy"}, {"arrows": "to", "from": "specialty_assist", "to": "rain_intensity_no_rain"}, {"arrows": "to", "from": "specialty_assist", "to": "specialty_pedagogo"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "specialty_psychotherapy"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "specialty_speech therapy"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "specialty_physiotherapy"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "under_12_years_old"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "age"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "specialty_occupational therapy"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "disability_motor"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "patient_needs_companion"}, {"arrows": "to", "from": "specialty_pedagogo", "to": "rain_intensity_heavy"}, {"arrows": "to", "from": "specialty_occupational therapy", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_occupational therapy", "to": "specialty_psychotherapy"}, {"arrows": "to", "from": "specialty_occupational therapy", "to": "specialty_speech therapy"}, {"arrows": "to", "from": "specialty_occupational therapy", "to": "specialty_physiotherapy"}, {"arrows": "to", "from": "specialty_occupational therapy", "to": "age"}, {"arrows": "to", "from": "specialty_occupational therapy", "to": "under_12_years_old"}, {"arrows": "to", "from": "specialty_occupational therapy", "to": "patient_needs_companion"}, {"arrows": "to", "from": "rain_intensity_heavy", "to": "appointment_date"}, {"arrows": "to", "from": "rain_intensity_heavy", "to": "rain_intensity_no_rain"}, {"arrows": "to", "from": "rain_intensity_heavy", "to": "age"}, {"arrows": "to", "from": "rain_intensity_heavy", "to": "rain_intensity_moderate"}, {"arrows": "to", "from": "specialty_physiotherapy", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_physiotherapy", "to": "specialty_psychotherapy"}, {"arrows": "to", "from": "specialty_physiotherapy", "to": "specialty_speech therapy"}, {"arrows": "to", "from": "specialty_physiotherapy", "to": "disability_motor"}, {"arrows": "to", "from": "specialty_physiotherapy", "to": "under_12_years_old"}, {"arrows": "to", "from": "specialty_physiotherapy", "to": "age"}, {"arrows": "to", "from": "specialty_physiotherapy", "to": "patient_needs_companion"}, {"arrows": "to", "from": "rain_intensity_moderate", "to": "appointment_date"}, {"arrows": "to", "from": "rain_intensity_moderate", "to": "rain_intensity_no_rain"}, {"arrows": "to", "from": "rain_intensity_moderate", "to": "age"}, {"arrows": "to", "from": "specialty_speech therapy", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_speech therapy", "to": "specialty_psychotherapy"}, {"arrows": "to", "from": "specialty_speech therapy", "to": "age"}, {"arrows": "to", "from": "specialty_speech therapy", "to": "patient_needs_companion"}, {"arrows": "to", "from": "specialty_speech therapy", "to": "disability_motor"}, {"arrows": "to", "from": "rain_intensity_no_rain", "to": "appointment_date"}, {"arrows": "to", "from": "rain_intensity_no_rain", "to": "age"}, {"arrows": "to", "from": "rain_intensity_no_rain", "to": "rainy_day_before"}, {"arrows": "to", "from": "specialty_psychotherapy", "to": "appointment_date"}, {"arrows": "to", "from": "specialty_psychotherapy", "to": "age"}, {"arrows": "to", "from": "specialty_psychotherapy", "to": "disability_motor"}, {"arrows": "to", "from": "specialty_psychotherapy", "to": "under_12_years_old"}, {"arrows": "to", "from": "specialty_psychotherapy", "to": "patient_needs_companion"}, {"arrows": "to", "from": "disability_motor", "to": "disability_intellectual"}, {"arrows": "to", "from": "disability_motor", "to": "appointment_date"}, {"arrows": "to", "from": "disability_motor", "to": "age"}, {"arrows": "to", "from": "disability_motor", "to": "patient_needs_companion"}, {"arrows": "to", "from": "disability_motor", "to": "no_show"}, {"arrows": "to", "from": "disability_intellectual", "to": "appointment_date"}, {"arrows": "to", "from": "disability_intellectual", "to": "under_12_years_old"}, {"arrows": "to", "from": "disability_intellectual", "to": "age"}, {"arrows": "to", "from": "disability_intellectual", "to": "rainy_day_before"}, {"arrows": "to", "from": "rainy_day_before", "to": "appointment_date"}, {"arrows": "to", "from": "rainy_day_before", "to": "storm_day_before"}, {"arrows": "to", "from": "rainy_day_before", "to": "age"}, {"arrows": "to", "from": "rainy_day_before", "to": "under_12_years_old"}, {"arrows": "to", "from": "rainy_day_before", "to": "patient_needs_companion"}, {"arrows": "to", "from": "rainy_day_before", "to": "no_show"}, {"arrows": "to", "from": "storm_day_before", "to": "appointment_date"}, {"arrows": "to", "from": "storm_day_before", "to": "age"}, {"arrows": "to", "from": "under_12_years_old", "to": "age"}, {"arrows": "to", "from": "under_12_years_old", "to": "appointment_date"}, {"arrows": "to", "from": "under_12_years_old", "to": "patient_needs_companion"}, {"arrows": "to", "from": "no_show", "to": "appointment_date"}, {"arrows": "to", "from": "no_show", "to": "age"}, {"arrows": "to", "from": "no_show", "to": "patient_needs_companion"}, {"arrows": "to", "from": "patient_needs_companion", "to": "appointment_date"}, {"arrows": "to", "from": "patient_needs_companion", "to": "age"}, {"arrows": "to", "from": "appointment_date", "to": "age"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "layout": {
+        "hierarchical": {
+            "blockShifting": true,
+            "edgeMinimization": true,
+            "enabled": true,
+            "levelSeparation": 150,
+            "parentCentralization": true,
+            "sortMethod": "hubsize",
+            "treeSpacing": 200
+        },
+        "improvedLayout": true,
+        "randomSeed": 0
+    },
+    "physics": {
+        "enabled": true,
+        "hierarchicalRepulsion": {
+            "centralGravity": 0.5,
+            "damping": 0.09,
+            "nodeDistance": 300,
+            "springConstant": 0.01,
+            "springLength": 100
+        },
+        "solver": "hierarchicalRepulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
