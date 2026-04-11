@@ -4,3 +4,7 @@ plotly
 scipy
 mlflow
 tqdm
+numpy
+scikit-learn
+umap-learn
+hdbscan
