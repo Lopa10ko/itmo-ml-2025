@@ -1,0 +1,13 @@
+transformers
+datasets
+evaluate
+mlflow
+plotly
+sacrebleu
+rouge-score
+streamlit
+torch
+pandas
+numpy
+tqdm
+nltk
