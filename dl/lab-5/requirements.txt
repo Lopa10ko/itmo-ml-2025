@@ -1,0 +1,14 @@
+numpy
+pandas
+plotly
+scikit-learn
+torch
+torchvision
+diffusers
+transformers
+accelerate
+datasets
+mlflow
+tqdm
+pillow
+ipykernel
