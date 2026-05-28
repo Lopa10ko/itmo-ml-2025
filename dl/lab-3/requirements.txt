@@ -7,4 +7,4 @@ plotly
 python-dotenv
 jupyter
 ipykernel
-git+https://github.com/ITMO-NSS-team/automas-research.git
+ollama
