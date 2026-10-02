@@ -1,0 +1,10 @@
+series,family,selected_parameters,validation_score,used_by,validation_start,validation_end,first_test_origin
+EU_Hourly_Load,AR,"{""lags"": 48}",0.035899882888508705,statsmodels + custom,566,580,580
+EU_Hourly_Load,ARIMA,"{""order"": [3, 1, 0]}",0.06754264190633204,statsmodels + custom,566,580,580
+EU_Hourly_Load,Holt-Winters,"{""trend"": null, ""damped_trend"": false, ""seasonal"": ""add"", ""seasonal_periods"": 24}",0.045440381855982336,statsmodels + custom,566,580,580
+ECG_TF_Normal,AR,"{""lags"": 140}",0.46132997434098383,statsmodels + custom,686,700,700
+ECG_TF_Normal,ARIMA,"{""order"": [3, 1, 1]}",0.6078321423630441,statsmodels + custom,686,700,700
+ECG_TF_Normal,Holt-Winters,"{""trend"": ""add"", ""damped_trend"": false, ""seasonal"": ""add"", ""seasonal_periods"": 140}",0.3640137326104984,statsmodels + custom,686,700,700
+SPY_AdjClose,AR,"{""lags"": 2}",0.009644518934255672,statsmodels + custom,596,610,610
+SPY_AdjClose,ARIMA,"{""order"": [1, 0, 1]}",0.005880025832204025,statsmodels + custom,596,610,610
+SPY_AdjClose,Holt-Winters,"{""trend"": null, ""damped_trend"": false, ""seasonal"": null, ""seasonal_periods"": null}",0.007954774458353573,statsmodels + custom,596,610,610
