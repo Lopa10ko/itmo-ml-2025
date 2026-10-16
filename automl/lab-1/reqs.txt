@@ -1,0 +1,11 @@
+numpy==2.4.4
+pandas==2.3.3
+scipy==1.17.1
+scikit-learn==1.8.0
+optuna==5.0.0
+plotly==6.7.0
+kaleido==1.4.0
+prettytable==3.17.0
+ipython==9.13.0
+nbformat==5.10.4
+threadpoolctl==3.6.0

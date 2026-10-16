@@ -207,6 +207,9 @@ marimo/_lsp/
 __marimo__/
 
 results_cache/
+mlruns/
+mlartifacts/
+tmp/
 # Large lab artifacts (GitHub 100MB limit)
 dl/lab-4/results_cache*.zip
 data/
