@@ -1,0 +1,12 @@
+[
+  {"id":"A","turns":[
+    {"text":"Покажи ноутбуки до 80 тысяч","expected":{"category":"laptop","max_price":80000,"sort_by":"price_asc"}},
+    {"text":"А сначала дорогие?","expected":{"category":"laptop","max_price":80000,"sort_by":"price_desc"}},
+    {"text":"А что есть среди смартфонов?","expected":{"category":"smartphone","max_price":80000,"sort_by":"price_desc"}}
+  ]},
+  {"id":"B","turns":[
+    {"text":"Покажи планшеты до 40 тысяч","expected":{"category":"tablet","max_price":40000,"sort_by":"price_asc"}},
+    {"text":"Теперь без ограничения цены","expected":{"category":"tablet","max_price":null,"sort_by":"price_asc"}},
+    {"text":"Тогда сначала дорогие","expected":{"category":"tablet","max_price":null,"sort_by":"price_desc"}}
+  ]}
+]

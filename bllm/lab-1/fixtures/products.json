@@ -1,0 +1,17 @@
+[
+  {"id": 1, "name": "Entry-level laptop", "category": "laptop", "price": 35000},
+  {"id": 2, "name": "Compact laptop", "category": "laptop", "price": 50000},
+  {"id": 3, "name": "Office laptop", "category": "laptop", "price": 70000},
+  {"id": 4, "name": "Gaming laptop", "category": "laptop", "price": 80000},
+  {"id": 5, "name": "Professional laptop", "category": "laptop", "price": 120000},
+  {"id": 6, "name": "Entry-level smartphone", "category": "smartphone", "price": 15000},
+  {"id": 7, "name": "Compact smartphone", "category": "smartphone", "price": 30000},
+  {"id": 8, "name": "Smartphone with a large battery", "category": "smartphone", "price": 50000},
+  {"id": 9, "name": "Camera-focused smartphone", "category": "smartphone", "price": 50000},
+  {"id": 10, "name": "Flagship smartphone", "category": "smartphone", "price": 100000},
+  {"id": 11, "name": "Entry-level tablet", "category": "tablet", "price": 12000},
+  {"id": 12, "name": "Student tablet", "category": "tablet", "price": 25000},
+  {"id": 13, "name": "Drawing tablet", "category": "tablet", "price": 40000},
+  {"id": 14, "name": "Productivity tablet", "category": "tablet", "price": 60000},
+  {"id": 15, "name": "Professional tablet", "category": "tablet", "price": 90000}
+]

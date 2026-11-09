@@ -1,0 +1,12 @@
+[
+  {"id":"Q1","text":"Найди ноутбуки дешевле 70 000 рублей","expected":{"category":"laptop","max_price":69999,"sort_by":"price_asc"}},
+  {"id":"Q2","text":"Покажи самые дорогие смартфоны","expected":{"category":"smartphone","max_price":null,"sort_by":"price_desc"}},
+  {"id":"Q3","text":"Хочу посмотреть планшеты","expected":{"category":"tablet","max_price":null,"sort_by":"price_asc"}},
+  {"id":"Q4","text":"Покажи ноутбуки до 50 тысяч","expected":{"category":"laptop","max_price":50000,"sort_by":"price_asc"}},
+  {"id":"Q5","text":"Найди холодильники","expected":{"category":"other","max_price":null,"sort_by":"price_asc"}},
+  {"id":"Q6","text":"Нужен недорогой ноутбук","expected":{"category":"laptop","max_price":null,"sort_by":"price_asc"},"interpretation":"«Недорогой» трактуется как сортировка по возрастанию цены без числового ограничения."},
+  {"id":"Q7","text":"Покажи телефоны до полтинника","expected":{"category":"smartphone","max_price":50000,"sort_by":"price_asc"},"interpretation":"В контексте покупки электроники «до полтинника» здесь означает не более 50 000 рублей. Это допущение задано явно."},
+  {"id":"Q8","text":"Покажи планшеты до 0 рублей","expected":{"category":"tablet","max_price":0,"sort_by":"price_asc"}},
+  {"id":"Q9","text":"Покажи ноутбуки до 80 тысяч, сначала дорогие","expected":{"category":"laptop","max_price":80000,"sort_by":"price_desc"}},
+  {"id":"Q10","text":"Покажи самые дешевые смартфоны до 50 000 рублей","expected":{"category":"smartphone","max_price":50000,"sort_by":"price_asc"}}
+]

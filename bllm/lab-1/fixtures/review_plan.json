@@ -1,0 +1,19 @@
+{
+  "minimum_products": 15,
+  "minimum_per_category": 4,
+  "studies": ["basic_chain", "structured", "search", "tools", "thinking", "dialogues", "without_database", "failure_handling"],
+  "offline_studies": ["failure_handling"],
+  "basic_cases": ["Q1", "Q2", "Q3"],
+  "languages": ["Russian", "English"],
+  "json_cases": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"],
+  "search_cases": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+  "tool_cases": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"],
+  "thinking_cases": ["Q6", "Q7"],
+  "ungrounded_cases": ["Q1", "Q2", "Q4"],
+  "thinking_modes": [false, true],
+  "context_modes": ["state", "history"],
+  "json_method": "json",
+  "tool_method": "tools",
+  "ping_request": "Reply exactly OK.",
+  "ungrounded_prompt": "Answer the user's question about a product catalogue. Reply concisely in the user's language. Do not invent catalogue data you cannot access or add unrelated buying advice."
+}

@@ -1,0 +1,1 @@
+Call {tool_name} exactly once with the interpreted parameters. If there is no numeric price cap, omit the optional max_price argument entirely. Its default is null. Only include max_price when it is an integer.

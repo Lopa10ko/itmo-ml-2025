@@ -1,0 +1,53 @@
+[project]
+name = "catalogue-assistant"
+version = "0.1.0"
+description = "A product catalogue with validated search criteria and a SQLite adapter"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=1,<2",
+    "langchain-core>=1,<2",
+    "langchain-openai>=1,<2",
+    "openai>=3,<4",
+    "pydantic>=2.14.2,<3",
+    "pydantic-settings>=2.2,<3",
+]
+
+[project.scripts]
+catalogue-initialize = "catalogue.entrypoints:initialize"
+catalogue-search = "catalogue.entrypoints:search"
+catalogue-populate = "catalogue.entrypoints:populate"
+catalogue-ping = "catalogue.entrypoints:ping"
+catalogue-experiments = "catalogue.entrypoints:experiments"
+catalogue-offline = "catalogue.entrypoints:offline"
+catalogue-report = "catalogue.entrypoints:report"
+catalogue-verify = "catalogue.entrypoints:verify"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18,<2",
+    "pytest>=9.2,<10",
+    "ruff>=0.14,<1",
+]
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["catalogue"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+files = ["catalogue"]
+strict = true

@@ -1,0 +1,2 @@
+Return only the complete JSON object, without reasoning.
+{format_instructions}

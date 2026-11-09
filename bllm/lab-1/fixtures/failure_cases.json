@@ -1,0 +1,19 @@
+{
+  "request": "Покажи ноутбуки до 50 тысяч",
+  "errors": [
+    {"name":"invalid_json","response":"not-json","expected_stage":"json_parsing"},
+    {"name":"invalid_category","response":"{\"category\":\"refrigerator\"}","expected_stage":"validation"},
+    {"name":"string_price","response":"{\"category\":\"laptop\",\"max_price\":\"50000\"}","expected_stage":"validation"},
+    {"name":"negative_price","response":"{\"category\":\"laptop\",\"max_price\":-1}","expected_stage":"validation"},
+    {"name":"string_none","response":"{\"category\":\"laptop\",\"max_price\":\"None\"}","expected_stage":"validation"}
+  ],
+  "retry": [
+    {"name":"without_retry","responses":["not-json","{\"category\":\"laptop\",\"max_price\":50000}"],"max_attempts":1,"expected_attempts":1,"expected_searches":0},
+    {"name":"recovered","responses":["not-json","{\"category\":\"laptop\",\"max_price\":50000}"],"max_attempts":3,"expected_attempts":2,"expected_searches":1},
+    {"name":"exhausted","responses":["not-json"],"max_attempts":3,"expected_attempts":3,"expected_searches":0},
+    {"name":"immediate_success","responses":["{\"category\":\"laptop\",\"max_price\":50000}"],"max_attempts":3,"expected_attempts":1,"expected_searches":1}
+  ],
+  "confirmation_response":"{\"category\":\"laptop\"}",
+  "confirmation_choices":[false,true],
+  "absent_tool_response":"No tool requested."
+}
