@@ -1,8 +1,8 @@
 # ITMO ML · 2025-2027
 
-Coursework, experiments, and lab reports from machine learning studies at ITMO University. The repository follows the path from data preparation and classical models to deep learning, time series, and automated model selection.
+Coursework, experiments, and lab reports from machine learning studies at ITMO University. The repository follows the path from data preparation and classical models to deep learning, time series, automated model selection, and language model applications.
 
-Most lab reports are Jupyter notebooks combining code, explanations, visualizations, and experimental results. Assignment PDFs, datasets, scripts, and exported reports sit alongside them. Materials are in English and Russian; lab numbering follows each course independently.
+Most lab reports are Jupyter notebooks combining code, explanations, visualizations, and experimental results. Assignment PDFs, datasets, scripts, exported reports, and presentation slides sit alongside them. Materials are in English and Russian; lab numbering follows each course independently.
 
 ## Courses at a glance
 
@@ -12,7 +12,8 @@ Most lab reports are Jupyter notebooks combining code, explanations, visualizati
 | [Mathematical Foundations of Machine Learning](#mathematical-foundations-of-machine-learning) | Linear algebra, numerical optimization, multivariate analysis, and probabilistic modeling | [`mfml/`](mfml/) · 4 labs and team reports |
 | [Deep Learning](#deep-learning) | CNNs, language model fine-tuning, agent systems, and generative models | [`dl/`](dl/) · 4 labs |
 | [Machine Learning for Time Series](#machine-learning-for-time-series) | Signal characterization, forecasting, causal analysis, reconstructed dynamics, and event processes | [`tsml/`](tsml/) · 8 labs |
-| [Automated Machine Learning](#automated-machine-learning) | Hyperparameter optimization, meta-features, and algorithm selection | [`automl/`](automl/) · 2 labs |
+| [Automated Machine Learning](#automated-machine-learning) | Hyperparameter optimization, meta-features, algorithm selection, and neural architecture search | [`automl/`](automl/) · 3 labs |
+| [Large Language Models (BLLM)](#large-language-models-bllm) | LangChain pipelines, structured extraction, tool calling, and dialogue state | [`bllm/`](bllm/) · 1 lab |
 
 ## Machine Learning
 
@@ -80,3 +81,16 @@ Experiments on how to choose model configurations and learning algorithms automa
 | --- | --- | --- |
 | 1 · Bayesian optimization | Compare a manual Gaussian-process/Expected Improvement optimizer, random search, and Optuna samplers for gradient boosting on MAGIC Gamma Telescope. | [Notebook](automl/lab-1/334771_Lopatenko_bayesian_opt.ipynb) · [Assignment](automl/lab-1/1.%20Bayesian%20optimization.md) · [Requirements](automl/lab-1/reqs.txt) |
 | 2 · Meta-features and algorithm selection | Compare hand-designed and PyMFE dataset descriptions for predicting the best algorithm in a fixed portfolio; examine invariance and meta-model performance. | [Notebook](automl/lab-2/334771_Lopatenko_meta_features.ipynb) · [Assignment](automl/lab-2/2.%20Meta-features.md) · [Experiment runner](automl/lab-2/run_meta_experiments.py) · [Requirements](automl/lab-2/reqs.txt) |
+| 3 · Neural architecture search | Compare Optuna TPE, native Auto-PyTorch/SMAC, and eleven LLM proposals for 1D CNNs on FordA; evaluate held-out quality, training and inference time, and parameter counts across seeds. | [Notebook](automl/lab-3/334771_Lopatenko_neural_architecture_search.ipynb) · [Assignment](automl/lab-3/3.%20Neural%20architecture%20search.md) · [LLM proposal viewer](automl/lab-3/LLM_NAS_search.html) · [Requirements](automl/lab-3/reqs.txt) |
+
+## Large Language Models (BLLM)
+
+Language model applications with validated outputs and explicit execution steps. The first lab interprets shopping requests with LangChain, validates search parameters with Pydantic, and retrieves products from SQLite. It also examines parsing retries, tool calling, reasoning modes, and follow-up requests.
+
+| Lab | What it is about | Artifacts |
+| --- | --- | --- |
+| 1 · Catalogue assistant | Build and evaluate a natural-language product search pipeline, with structured extraction, tool calls, error handling, execution logs, and dialogue state. | [Setup and usage](bllm/lab-1/README.md) · [Assignment](bllm/lab-1/SPECIFICATION.md) · [Report](bllm/lab-1/artifacts/report.md) · [Recorded results](bllm/lab-1/artifacts/results.json) · [Source](bllm/lab-1/catalogue/) · [Tests](bllm/lab-1/tests/) |
+
+## Presentations
+
+[FEDOT.Industrial & FEDOT.LLM — From signal representations to executable experiments](automl/thesis/fedot_automl.pdf) covers signal representations, kernel-guided pipeline search, and LLM orchestration of AutoML experiments.
